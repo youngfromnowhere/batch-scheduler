@@ -23,9 +23,6 @@ public class Batch {
     private Long id;
 
     @Column(nullable = false)
-    private String title;
-
-    @Column(nullable = false)
     private String content;
 
     @Column(nullable = false)
@@ -43,7 +40,7 @@ public class Batch {
     private RepeatMode repeatMode;
 
     @Column(nullable = false)
-    private Boolean isOngoing;
+    private boolean isOngoing;
 
     @Column
     private LocalDateTime pausedAt;
