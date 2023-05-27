@@ -1,7 +1,7 @@
 package com.cmjc.batchscheduler.batch.dto;
 
 import com.cmjc.batchscheduler.batch.entity.RepeatMode;
-import com.cmjc.batchScheduler.batch.entity.Batch;
+import com.cmjc.batchscheduler.batch.entity.Batch;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -21,9 +21,9 @@ public class BatchResponseDto {
     private final LocalDateTime modifiedAt;
     private final LocalDateTime scheduledAt;
     private final RepeatMode repeatMode;
-    private final boolean isOngoing;
+    private final boolean ongoing;
     private final LocalDateTime pausedAt;
-    private final boolean isActive = true;
+    private final boolean active;
     private final LocalDateTime deactivatedAt;
 
     /**
@@ -36,9 +36,9 @@ public class BatchResponseDto {
         this.modifiedAt = batch.getModifiedAt();
         this.scheduledAt = batch.getScheduledAt();
         this.repeatMode = batch.getRepeatMode();
-        this.isOngoing = batch.getIsOngoing();
+        this.ongoing = batch.isOngoing();
         this.pausedAt = batch.getPausedAt();
-        this.isActive = batch.getIsActive();
+        this.active = batch.isActive();
         this.deactivatedAt = batch.getDeactivatedAt();
     }
 

@@ -40,13 +40,13 @@ public class Batch {
     private RepeatMode repeatMode;
 
     @Column(nullable = false)
-    private boolean isOngoing;
+    private boolean ongoing = true;
 
     @Column
     private LocalDateTime pausedAt;
 
     @Column(nullable = false)
-    private boolean isActive = true;
+    private boolean active = true;
 
     @Column
     private LocalDateTime deactivatedAt;
@@ -55,9 +55,13 @@ public class Batch {
     * Constructor
     */
     @Builder
-    public Batch(String title, String content, RepeatMode repeatMode) {
-        this.title = title;
+    public Batch(
+        String content,
+        LocalDateTime scheduledAt,
+        RepeatMode repeatMode
+    ) {
         this.content = content;
+        this.scheduledAt = scheduledAt;
         this.repeatMode = repeatMode;
     }
 

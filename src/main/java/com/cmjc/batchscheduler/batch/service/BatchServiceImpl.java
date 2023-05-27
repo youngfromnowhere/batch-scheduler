@@ -1,4 +1,4 @@
-package com.cmjc.batchscheduler.service;
+package com.cmjc.batchscheduler.batch.service;
 
 public class BatchServiceImpl implements BatchService {
 }
