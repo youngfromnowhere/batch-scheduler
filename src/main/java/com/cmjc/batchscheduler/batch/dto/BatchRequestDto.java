@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 /**
-* Batch 생성 or 수정 Dto
-*/
+ * Batch 생성 or 수정 Dto
+ */
 //lombok
 @Getter
 @NoArgsConstructor
