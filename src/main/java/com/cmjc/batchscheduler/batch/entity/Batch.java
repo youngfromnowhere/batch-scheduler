@@ -5,6 +5,8 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.cmjc.batchscheduler.common.entity.Timestamp;
+
 import java.time.LocalDateTime;
 
 //lombok
@@ -13,7 +15,7 @@ import java.time.LocalDateTime;
 //jpa
 @Entity
 @Table(name = "batch")
-public class Batch {
+public class Batch extends Timestamp {
     /**
      * Columns
      */
@@ -24,14 +26,6 @@ public class Batch {
     @Column(nullable = false)
     @Setter
     private String content;
-
-    @Column(nullable = false)
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    @Column(nullable = false)
-    @LastModifiedDate
-    private LocalDateTime modifiedAt;
 
     @Column(nullable = false)
     @Setter
