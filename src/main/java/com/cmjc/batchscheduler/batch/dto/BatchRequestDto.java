@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * Batch 생성 or 수정 Dto
  */
@@ -16,6 +18,7 @@ public class BatchRequestDto {
 
     private String content;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime scheduledAt;
 
     private RepeatMode repeatMode;
@@ -29,6 +32,7 @@ public class BatchRequestDto {
     @Getter
     @NoArgsConstructor
     public static class ScheduleUpdate {
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime scheduledAt;
     }
 

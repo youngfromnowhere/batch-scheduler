@@ -7,23 +7,40 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
-* Batch 응답 Dto
+* Batch 응답 DTO
 */
 
-//lombok
+// lombok
 @Getter
 @RequiredArgsConstructor
 public class BatchResponseDto {
+
     private final Long id;
+
     private final String content;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private final LocalDateTime createdAt;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private final LocalDateTime modifiedAt;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private final LocalDateTime scheduledAt;
+
     private final RepeatMode repeatMode;
+
     private final boolean ongoing;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private final LocalDateTime pausedAt;
+
     private final boolean active;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private final LocalDateTime deactivatedAt;
 
     /**
