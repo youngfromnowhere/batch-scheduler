@@ -7,9 +7,12 @@ import com.cmjc.batchscheduler.batch.service.BatchService;
 import com.cmjc.batchscheduler.batch.dto.BatchRequestDto;
 import com.cmjc.batchscheduler.batch.dto.BatchResponseDto;
 
+import com.cmjc.batchscheduler.common.exceptions.CustomException;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.cmjc.batchscheduler.common.exceptions.ErrorCode.*;
 //lombok
 @RequiredArgsConstructor
 
@@ -29,7 +32,14 @@ public class BatchController {
     public void createBatch(
         @RequestBody BatchRequestDto requestDto
     ) {
+
+        //Content 빈칸입력 check
+        if (requestDto.getContent().trim().equals("")) {
+            throw new CustomException(BAD_REQUEST_BATCH_CONTENT);
+        }
+
         batchService.createBatch(requestDto);
+
     }
     
     /**
