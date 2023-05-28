@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Stream;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -44,8 +46,8 @@ public class BatchResponseDto {
     private final LocalDateTime deactivatedAt;
 
     /**
-    * 생성자
-    */
+     * 생성자
+     */
     private BatchResponseDto(Batch batch) {
         this.id = batch.getId();
         this.content = batch.getContent();
@@ -57,6 +59,19 @@ public class BatchResponseDto {
         this.pausedAt = batch.getPausedAt();
         this.active = batch.isActive();
         this.deactivatedAt = batch.getDeactivatedAt();
+    }
+
+    /**
+     * Batch List를 DTO List로 반환하는 메서드
+     *
+     * @param batchList Batch 인스턴스로 이루어진 List
+     * @return List<BatchResponseDto>
+     */
+    public static List<BatchResponseDto> toDtoList(
+        List<Batch> batchList
+    ) {
+        Stream<Batch> batchStr = batchList.stream();
+        return batchStr.map(BatchResponseDto::of).toList();
     }
 
     public static BatchResponseDto of(Batch batch) {

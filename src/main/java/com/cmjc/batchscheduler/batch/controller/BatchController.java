@@ -8,6 +8,7 @@ import com.cmjc.batchscheduler.batch.dto.BatchRequestDto;
 import com.cmjc.batchscheduler.batch.dto.BatchResponseDto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 //lombok
 @RequiredArgsConstructor
@@ -42,6 +43,17 @@ public class BatchController {
         @PathVariable Long id
     ) {
         return batchService.getBatch(id);
+    }
+
+    /**
+     * 모든 Batch를 조회하는 메서드
+     * [GET] /api/batch/list
+     *
+     * @param id 대상 Batch ID
+     */
+    @GetMapping("list")
+    public List<BatchResponseDto> getBatchList() {
+        return batchService.getBatchList();
     }
 
     /**

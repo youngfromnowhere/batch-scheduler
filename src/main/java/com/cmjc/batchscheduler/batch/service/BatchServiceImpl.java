@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.time.LocalDateTime;
 
 //lombok
@@ -40,6 +41,11 @@ public class BatchServiceImpl implements BatchService {
         return BatchResponseDto.of(foundBatch);
     }
 
+    @Override
+    public List<BatchResponseDto> getBatchList() {
+        List<Batch> batchList = batchRepository.findAll();
+        return BatchResponseDto.toDtoList(batchList);
+    }
 
     @Override
     public void deleteBatch(Long batchId) {

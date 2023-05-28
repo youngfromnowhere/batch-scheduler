@@ -5,6 +5,7 @@ import com.cmjc.batchscheduler.batch.dto.BatchResponseDto;
 import com.cmjc.batchscheduler.batch.entity.RepeatMode;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface BatchService {
 
@@ -20,6 +21,11 @@ public interface BatchService {
      * @param batchId 조회할 Batch의 id
      */
     BatchResponseDto getBatch(Long batchId);
+
+    /**
+     * 모든 Batch를 조회
+     */
+    List<BatchResponseDto> getBatchList();
 
     /**
      * 대상 Batch를 삭제
