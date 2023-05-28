@@ -6,12 +6,16 @@ import com.cmjc.batchscheduler.batch.entity.RepeatMode;
 import com.cmjc.batchscheduler.batch.dto.BatchRequestDto;
 import com.cmjc.batchscheduler.batch.dto.BatchResponseDto;
 
+import com.cmjc.batchscheduler.common.exceptions.CustomException;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.time.LocalDateTime;
+
+import static com.cmjc.batchscheduler.common.exceptions.ErrorCode.*;
 
 //lombok
 @RequiredArgsConstructor
@@ -103,7 +107,7 @@ public class BatchServiceImpl implements BatchService {
     //해당 id의 Batch를 조회하는 내부 method
     public Batch validateBatch(Long batchId) {
         return batchRepository.findById(batchId).orElseThrow(
-            () -> new IllegalStateException("Batch를 찾을 수 없습니다.")
+            () -> new CustomException(BATCH_NOT_FOUND)
         );
     }
 
