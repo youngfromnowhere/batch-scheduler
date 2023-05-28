@@ -8,7 +8,9 @@ public enum RepeatMode {
     YEARLY("YEARLY");
 
     private final String mode;
+
     RepeatMode(String mode) {
         this.mode = mode;
     }
+
 }

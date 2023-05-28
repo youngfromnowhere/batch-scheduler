@@ -20,14 +20,20 @@ public class BatchRequestDto {
 
     private RepeatMode repeatMode;
 
+    @Getter
+    @NoArgsConstructor
     public static class ContentUpdate {
         private String content;
     }
 
+    @Getter
+    @NoArgsConstructor
     public static class ScheduleUpdate {
         private LocalDateTime scheduledAt;
     }
 
+    @Getter
+    @NoArgsConstructor
     public static class RepeatUpdate {
         private RepeatMode repeatMode;
     }

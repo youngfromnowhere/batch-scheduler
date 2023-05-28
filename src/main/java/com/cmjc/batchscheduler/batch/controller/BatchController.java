@@ -22,41 +22,64 @@ public class BatchController {
     public void createBatch(
         @RequestBody BatchRequestDto requestDto
     ) {
+        batchService.createBatch(requestDto);
     }
     
     @GetMapping("/{id}")
-    public void getBatch() {
+    public BatchResponseDto getBatch(
+        @PathVariable Long id
+    ) {
+        return batchService.getBatch(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBatch() {
+    public void deleteBatch(
+        @PathVariable Long id
+    ) {
+        batchService.deleteBatch(id);
     }
 
     @PatchMapping("/{id}/content")
-    public void updateBatchContent() {
+    public void updateBatchContent(
+        @RequestBody BatchRequestDto.ContentUpdate requestDto,
+        @PathVariable Long id
+    ) {
+        batchService.updateBatchContent(requestDto.getContent(), id);
     }
 
     @PatchMapping("/{id}/schedule")
-    public void updateBatchSchedule() {
+    public void updateBatchSchedule(
+        @RequestBody BatchRequestDto.ScheduleUpdate requestDto,
+        @PathVariable Long id
+    ) {
+        batchService.updateBatchSchedule(requestDto.getScheduledAt(), id);
     }
 
     @PatchMapping("/{id}/repeat-mode")
-    public void updateBatchRepeat() {
+    public void updateBatchRepeat(
+        @RequestBody BatchRequestDto.RepeatUpdate requestDto,
+        @PathVariable Long id
+    ) {
+        batchService.updateBatchRepeat(requestDto.getRepeatMode(), id);
     }
 
     @PatchMapping("/{id}/pause")
-    public void pauseBatch() {
+    public void pauseBatch(@PathVariable Long id) {
+        batchService.pauseBatch(id);
     }
 
     @PatchMapping("/{id}/resume")
-    public void resumeBatch() {
+    public void resumeBatch(@PathVariable Long id) {
+        batchService.resumeBatch(id);
     }
 
     @PatchMapping("/{id}/deactivate")
-    public void deactivateBatch() {
+    public void deactivateBatch(@PathVariable Long id) {
+        batchService.deactivateBatch(id);
     }
 
     @PatchMapping("/{id}/activate")
-    public void activateBatch() {
+    public void activateBatch(@PathVariable Long id) {
+        batchService.activateBatch(id);
     }
 }

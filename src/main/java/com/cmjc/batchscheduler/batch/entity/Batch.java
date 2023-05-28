@@ -9,20 +9,20 @@ import java.time.LocalDateTime;
 
 //lombok
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 //jpa
 @Entity
 @Table(name = "batch")
 public class Batch {
     /**
-    * Columns
-    */
+     * Columns
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false)
+    @Setter
     private String content;
 
     @Column(nullable = false)
@@ -34,9 +34,11 @@ public class Batch {
     private LocalDateTime modifiedAt;
 
     @Column(nullable = false)
+    @Setter
     private LocalDateTime scheduledAt;
 
     @Column
+    @Setter
     private RepeatMode repeatMode;
 
     @Column(nullable = false)
@@ -52,8 +54,12 @@ public class Batch {
     private LocalDateTime deactivatedAt;
 
     /**
-    * Constructor
-    */
+     * Constructor
+     *
+     * @param content 내용
+     * @param scheduledAt 예정일
+     * @param repeatMode 반복모드
+     */
     @Builder
     public Batch(
         String content,
@@ -63,6 +69,36 @@ public class Batch {
         this.content = content;
         this.scheduledAt = scheduledAt;
         this.repeatMode = repeatMode;
+    }
+
+    /**
+     * 서비스 메소드
+     */
+    public void pauseBatch() {
+        this.ongoing = false;
+        this.pausedAt = LocalDateTime.now();
+    }
+
+    /**
+     * 서비스 메소드
+     */
+    public void resumeBatch() {
+        this.ongoing = true;
+    }
+
+    /**
+     * 서비스 메소드
+     */
+    public void deactivateBatch() {
+        this.active = false;
+        this.deactivatedAt = LocalDateTime.now();
+    }
+
+    /**
+     * 서비스 메소드
+     */
+    public void activateBatch() {
+        this.active = true;
     }
 
 }
